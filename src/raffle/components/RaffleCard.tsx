@@ -5,6 +5,16 @@ interface RaffleCardProps {
   onSelect: (raffle: Raffle) => void;
 }
 
+interface Ticket {
+  id: string;
+  number: number;
+  createdAt: string;
+  winner1: boolean;
+  winner2: boolean;
+  winner3: boolean;
+  status: string;
+}
+
 interface Raffle {
   id: string;
   title: string;
@@ -14,11 +24,12 @@ interface Raffle {
   totalTickets: number;
   tickets_sold: number;
   draw_date: string;
-  status: 'active' | 'completed' | 'cancelled';
+  status: string;
   winner_id: string | null;
   created_by: string;
   created_at: string;
   updated_at: string;
+  tickets: Ticket[];
 }
 
 export const RaffleCard = ({ raffle, onSelect }: RaffleCardProps) => {

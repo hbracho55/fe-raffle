@@ -5,14 +5,6 @@ import { RaffleHeader } from '@/raffle/layouts/RaffleHeader';
 import { RaffleFooter } from '@/raffle/layouts/RaffleFooter';
 import { RaffleCard } from '@/raffle/components/RaffleCard';
 import { RaffleModal } from '@/raffle/components/RaffleModal';
-//import { supabase, Raffle } from './lib/supabase';
-
-interface Profile {
-  id: string;
-  email: string;
-  full_name: string;
-  created_at: string;
-}
 
 interface Raffle {
   id: string;
@@ -23,19 +15,22 @@ interface Raffle {
   totalTickets: number;
   tickets_sold: number;
   draw_date: string;
-  status: 'Activo' | 'Reservado' | 'Pagado';
+  status: string;
   winner_id: string | null;
   created_by: string;
   created_at: string;
   updated_at: string;
+  tickets: Ticket[];
 }
 
 interface Ticket {
   id: string;
-  raffle_id: string;
-  user_id: string;
-  ticket_number: number;
-  purchase_date: string;
+  number: number;
+  createdAt: string;
+  winner1: boolean;
+  winner2: boolean;
+  winner3: boolean;
+  status: string;
 }
 
 export const HomePage = () => {
@@ -47,7 +42,7 @@ export const HomePage = () => {
   const fetchRaffles = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://rifabramen.ddns.net:4200/api/raffles`, {
+      const res = await fetch(`http://localhost:4200/api/raffles`, {
         headers: {
           Accept: 'application/json'
         }

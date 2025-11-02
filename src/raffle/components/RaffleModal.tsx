@@ -2,12 +2,7 @@ import { useState } from 'react';
 import { X, Calendar, Ticket } from 'lucide-react';
 import { NumberSelector } from './NumberSelector';
 
-interface RaffleModalProps {
-  raffle: Raffle | null;
-  onClose: () => void;
-  onPurchaseSuccess: () => void;
-  onPurchaseError: () => void;
-}
+
 
 interface Ticket {
   id: string;
@@ -28,11 +23,19 @@ interface Raffle {
   totalTickets: number;
   tickets_sold: number;
   draw_date: string;
-  status: 'Activo' | 'Reservado' | 'Pagado';
+  status: string;
   winner_id: string | null;
   created_by: string;
   created_at: string;
   updated_at: string;
+  tickets: Ticket[];
+}
+
+interface RaffleModalProps {
+  raffle: Raffle;
+  onClose: () => void;
+  onPurchaseSuccess: () => void;
+  onPurchaseError: () => void;
 }
 
 export const RaffleModal = ({ raffle, onClose, onPurchaseSuccess, onPurchaseError }: RaffleModalProps) => {
@@ -84,7 +87,7 @@ export const RaffleModal = ({ raffle, onClose, onPurchaseSuccess, onPurchaseErro
 
     try {
 
-      const res = await fetch(`http://rifabramen.ddns.net:4200/api/manage-raffle-orq/tickets`, {
+      const res = await fetch(`http://localhost:4200/api/manage-raffle-orq/tickets`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -132,10 +135,10 @@ export const RaffleModal = ({ raffle, onClose, onPurchaseSuccess, onPurchaseErro
     }
   };
 
-  const handleInputOnBlur = async (e) => {
+  const handleInputOnBlur = async () => {
     if (documentNumber.trim() != '') {
       try {
-        const res = await fetch(`http://rifabramen.ddns.net:4200/api/players/criteria?personalId=${documentNumber.trim()}`, {
+        const res = await fetch(`http://localhost:4200/api/players/criteria?personalId=${documentNumber.trim()}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -164,7 +167,7 @@ export const RaffleModal = ({ raffle, onClose, onPurchaseSuccess, onPurchaseErro
     } 
   };
 
-  const handleInputChange = async (e) => {
+  const handleInputChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
     if (name === 'documentNumber') {
@@ -233,7 +236,6 @@ export const RaffleModal = ({ raffle, onClose, onPurchaseSuccess, onPurchaseErro
             <NumberSelector
               raffleId={raffle.id}
               selectedNumbers={selectedNumbers}
-              selectedNumberIds={selectedNumberIds}
               onNumberToggle={handleNumberToggle}
               tickets={raffle.tickets}
               maxSelection={100}

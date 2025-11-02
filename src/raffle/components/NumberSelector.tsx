@@ -13,7 +13,6 @@ interface Ticket {
 interface NumberSelectorProps {
   raffleId: string;
   selectedNumbers: number[];
-  selectedNumberIds: string[];
   onNumberToggle: (ticket: Ticket) => void;
   tickets: Ticket[];
   maxSelection?: number;
@@ -22,32 +21,13 @@ interface NumberSelectorProps {
 export const NumberSelector = ({
   raffleId,
   selectedNumbers,
-  selectedNumberIds,
   onNumberToggle,
   tickets,
   maxSelection = 10
 }: NumberSelectorProps) => {
-  const [takenNumbers, setTakenNumbers] = useState<Set<number>>(new Set());
-  const [loading, setLoading] = useState(false);
+  const [takenNumbers] = useState<Set<number>>(new Set());
   useEffect(() => {
-  //  fetchTakenNumbers();
   }, [raffleId]);
-
-  /* const fetchTakenNumbers = async () => {
-    setLoading(true);
-    const { data, error } = await supabase
-      .from('tickets')
-      .select('ticket_number')
-      .eq('raffle_id', raffleId);
-
-    if (error) {
-      console.error('Error fetching taken numbers:', error);
-    } else {
-      const taken = new Set(data.map(t => t.ticket_number));
-      setTakenNumbers(taken);
-    }
-    setLoading(false);
-  }; */
 
   const handleNumberClick = (ticket: Ticket) => {
     if (takenNumbers.has(ticket.number)) return;
@@ -75,14 +55,6 @@ export const NumberSelector = ({
     }
     return 'bg-white border-2 border-gray-300 text-gray-700 hover:border-blue-500 hover:shadow-md hover:scale-105 cursor-pointer';
   };
-
-  if (loading) {
-    return (
-      <div className="flex justify-center items-center py-12">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-blue-600"></div>
-      </div>
-    );
-  }
 
   const sortedTickets = [...tickets].sort((a, b) => a.number - b.number);
 

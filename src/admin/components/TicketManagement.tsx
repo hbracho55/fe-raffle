@@ -1,10 +1,5 @@
 import { useEffect, useState } from 'react';
-import { ArrowLeft, CheckCircle, Award} from 'lucide-react';
-
-interface TicketManagementProps {
-  raffle: Raffle;
-  onBack: () => void;
-}
+import { CheckCircle, Award} from 'lucide-react';
 
 interface Raffle {
   id: string;
@@ -15,20 +10,11 @@ interface Raffle {
   total_tickets: number;
   beneficiary: string;
   draw_date: string;
-  status: 'active' | 'completed' | 'cancelled';
+  status: string;
   winner_id: string | null;
   created_by: string;
   created_at: string;
   updated_at: string;
-}
-
-interface Profile {
-  id: string;
-  email: string;
-  full_name: string;
-  phone?: string;
-  is_admin: boolean;
-  created_at: string;
 }
 
 interface Player {
@@ -50,11 +36,10 @@ interface Ticket {
 }
 
 interface TicketWithDetails extends Ticket {
-  user?: Profile;
   raffle?: Raffle;
 }
 
-export const TicketManagement = ({ raffle, onBack }: TicketManagementProps) => {
+export const TicketManagement = () => {
   const [tickets, setTickets] = useState<TicketWithDetails[]>([]);
   const [loading, setLoading] = useState(false);
   const [raffleId, setRaffleId] = useState('');
@@ -68,7 +53,7 @@ export const TicketManagement = ({ raffle, onBack }: TicketManagementProps) => {
   const fetchTickets = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://rifabramen.ddns.net:4200/api/raffles`, {
+      const res = await fetch(`http://localhost:4200/api/raffles`, {
         headers: {
           Accept: 'application/json'
         }
@@ -88,7 +73,7 @@ export const TicketManagement = ({ raffle, onBack }: TicketManagementProps) => {
 
   const handleStatusChange = async (ticketId: string, newStatus: string, playerData: Player) => {
     try {
-      const res = await fetch(`http://rifabramen.ddns.net:4200/api/manage-raffle-orq/tickets`, {
+      const res = await fetch(`http://localhost:4200/api/manage-raffle-orq/tickets`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -124,7 +109,7 @@ export const TicketManagement = ({ raffle, onBack }: TicketManagementProps) => {
 
   const handleUpdateWinner = async (ticketId: string, winnerField: string, isWinner: boolean, playerData: Player) => {
     try {
-      const res = await fetch(`http://rifabramen.ddns.net:4200/api/manage-raffle-orq/tickets`, {
+      const res = await fetch(`http://localhost:4200/api/manage-raffle-orq/tickets`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -157,7 +142,7 @@ export const TicketManagement = ({ raffle, onBack }: TicketManagementProps) => {
 
   const handleNotifyEmail = async (ticketNumber: number, name: string, email: string, beneficiary: string) => {
     try {
-      const res = await fetch(`http://rifabramen.ddns.net:4200/api/manage-raffle-orq/send-email-no-winner`, {
+      const res = await fetch(`http://localhost:4200/api/manage-raffle-orq/send-email-no-winner`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -214,14 +199,7 @@ export const TicketManagement = ({ raffle, onBack }: TicketManagementProps) => {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-4">
-        <button
-          onClick={onBack}
-          className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-        >
-          <ArrowLeft className="w-6 h-6" />
-        </button>
         <div>
-          <h2 className="text-2xl font-bold text-gray-900">{raffle.title}</h2>
           <p className="text-gray-600">Gestión de Boletos</p>
         </div>
       </div>
@@ -329,7 +307,7 @@ export const TicketManagement = ({ raffle, onBack }: TicketManagementProps) => {
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <select
-                      value={ticket.winner1}
+                      value={ticket.winner1.toString()}
                       onChange={(e) => handleUpdateWinner(ticket.id, 'winner1', e.target.value === 'true', {
                                         personalId: ticket.player?.personalId ?? '',
                                         name: ticket.player?.name ?? '',
@@ -338,13 +316,13 @@ export const TicketManagement = ({ raffle, onBack }: TicketManagementProps) => {
                                       })}
                       className={`px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(ticket.status)}`}
                     >
-                      <option value={false}>No</option>
-                      <option value={true}>Sí</option>
+                      <option value="false">No</option>
+                      <option value="true">Sí</option>
                     </select>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <select
-                      value={ticket.winner2}
+                      value={ticket.winner2.toString()}
                       onChange={(e) => handleUpdateWinner(ticket.id, 'winner2', e.target.value === 'true', {
                                         personalId: ticket.player?.personalId ?? '',
                                         name: ticket.player?.name ?? '',
@@ -353,13 +331,13 @@ export const TicketManagement = ({ raffle, onBack }: TicketManagementProps) => {
                                       })}
                       className={`px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(ticket.status)}`}
                     >
-                      <option value={false}>No</option>
-                      <option value={true}>Sí</option>
+                      <option value="false">No</option>
+                      <option value="true">Sí</option>
                     </select>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <select
-                      value={ticket.winner3}
+                      value={ticket.winner3.toString()}
                       onChange={(e) => handleUpdateWinner(ticket.id, 'winner3', e.target.value === 'true', {
                                         personalId: ticket.player?.personalId ?? '',
                                         name: ticket.player?.name ?? '',
@@ -368,8 +346,8 @@ export const TicketManagement = ({ raffle, onBack }: TicketManagementProps) => {
                                       })}
                       className={`px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(ticket.status)}`}
                     >
-                      <option value={false}>No</option>
-                      <option value={true}>Sí</option>
+                      <option value="false">No</option>
+                      <option value="true">Sí</option>
                     </select>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
