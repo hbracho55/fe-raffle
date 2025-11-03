@@ -42,7 +42,7 @@ export const HomePage = () => {
   const fetchRaffles = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`https://fe-raffle.vercel.app:4200/api/raffles`, {
+      const res = await fetch(`https://rifabramen.ddns.net:4200/api/raffles`, {
         headers: {
           Accept: 'application/json'
         }

@@ -53,7 +53,7 @@ export const TicketManagement = () => {
   const fetchTickets = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`https://fe-raffle.vercel.app:4200/api/raffles`, {
+      const res = await fetch(`https://rifabramen.ddns.net:4200/api/raffles`, {
         headers: {
           Accept: 'application/json'
         }
@@ -73,7 +73,7 @@ export const TicketManagement = () => {
 
   const handleStatusChange = async (ticketId: string, newStatus: string, playerData: Player) => {
     try {
-      const res = await fetch(`https://fe-raffle.vercel.app:4200/api/manage-raffle-orq/tickets`, {
+      const res = await fetch(`https://rifabramen.ddns.net:4200/api/manage-raffle-orq/tickets`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -109,7 +109,7 @@ export const TicketManagement = () => {
 
   const handleUpdateWinner = async (ticketId: string, winnerField: string, isWinner: boolean, playerData: Player) => {
     try {
-      const res = await fetch(`https://fe-raffle.vercel.app:4200/api/manage-raffle-orq/tickets`, {
+      const res = await fetch(`https://rifabramen.ddns.net:4200/api/manage-raffle-orq/tickets`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -142,7 +142,7 @@ export const TicketManagement = () => {
 
   const handleNotifyEmail = async (ticketNumber: number, name: string, email: string, beneficiary: string) => {
     try {
-      const res = await fetch(`https://fe-raffle.vercel.app:4200/api/manage-raffle-orq/send-email-no-winner`, {
+      const res = await fetch(`https://rifabramen.ddns.net:4200/api/manage-raffle-orq/send-email-no-winner`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
