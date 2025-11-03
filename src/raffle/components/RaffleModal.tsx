@@ -85,7 +85,7 @@ export const RaffleModal = ({ raffle, onClose, onPurchaseSuccess, onPurchaseErro
 
     try {
 
-      const res = await fetch(`http://localhost:4200/api/manage-raffle-orq/tickets`, {
+      const res = await fetch(`https://fe-raffle.vercel.app:4200/api/manage-raffle-orq/tickets`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -136,7 +136,7 @@ export const RaffleModal = ({ raffle, onClose, onPurchaseSuccess, onPurchaseErro
   const handleInputOnBlur = async () => {
     if (documentNumber.trim() != '') {
       try {
-        const res = await fetch(`http://localhost:4200/api/players/criteria?personalId=${documentNumber.trim()}`, {
+        const res = await fetch(`https://fe-raffle.vercel.app/:4200/api/players/criteria?personalId=${documentNumber.trim()}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
