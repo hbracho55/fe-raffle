@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { X, Calendar, Ticket } from 'lucide-react';
 import { NumberSelector } from './NumberSelector';
 
-
-
 interface Ticket {
   id: string;
   number: number;
