@@ -136,7 +136,7 @@ export const RaffleModal = ({ raffle, onClose, onPurchaseSuccess, onPurchaseErro
   const handleInputOnBlur = async () => {
     if (documentNumber.trim() != '') {
       try {
-        const res = await fetch(`https://fe-raffle.vercel.app/:4200/api/players/criteria?personalId=${documentNumber.trim()}`, {
+        const res = await fetch(`https://fe-raffle.vercel.app:4200/api/players/criteria?personalId=${documentNumber.trim()}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
