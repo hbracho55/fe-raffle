@@ -75,10 +75,6 @@ export const NumberSelector = ({
           <span className="text-gray-600">Disponible</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 bg-gradient-to-br from-blue-600 to-cyan-500 rounded"></div>
-          <span className="text-gray-600">Seleccionado</span>
-        </div>
-        <div className="flex items-center gap-2">
           <div className="w-6 h-6 bg-orange-300 rounded"></div>
           <span className="text-gray-600">Reservado</span>
         </div>
