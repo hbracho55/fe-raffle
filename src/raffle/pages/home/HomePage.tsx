@@ -44,7 +44,8 @@ export const HomePage = () => {
     try {
       const res = await fetch(`https://superabnormal-unmounded-wilford.ngrok-free.dev/api/raffles`, {
         headers: {
-          Accept: 'application/json'
+          Accept: 'application/json',
+          'ngrok-skip-browser-warning': 'true',
         }
       })
       if (!res.ok) throw new Error('Failed to fetch tickets data')

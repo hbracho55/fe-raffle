@@ -90,6 +90,7 @@ export const RaffleModal = ({ raffle, onClose, onPurchaseSuccess, onPurchaseErro
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
+          'ngrok-skip-browser-warning': 'true',
         },
         body: JSON.stringify({
           status: 'Reservado',
@@ -141,6 +142,7 @@ export const RaffleModal = ({ raffle, onClose, onPurchaseSuccess, onPurchaseErro
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
+            'ngrok-skip-browser-warning': 'true',
           }
         });
 

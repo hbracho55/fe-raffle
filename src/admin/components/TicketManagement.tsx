@@ -55,7 +55,8 @@ export const TicketManagement = () => {
     try {
       const res = await fetch(`https://superabnormal-unmounded-wilford.ngrok-free.dev/api/raffles`, {
         headers: {
-          Accept: 'application/json'
+          Accept: 'application/json',
+          'ngrok-skip-browser-warning': 'true'
         }
       })
       if (!res.ok) throw new Error('Failed to fetch tickets data')
@@ -78,6 +79,7 @@ export const TicketManagement = () => {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
+          'ngrok-skip-browser-warning': 'true',
         },
         body: JSON.stringify({
           status: newStatus, // Estado dinámico seleccionado
@@ -114,6 +116,7 @@ export const TicketManagement = () => {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
+          'ngrok-skip-browser-warning': 'true',
         },
         body: JSON.stringify({
           [winnerField]: isWinner,
@@ -147,6 +150,7 @@ export const TicketManagement = () => {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
+          'ngrok-skip-browser-warning': 'true',
         },
         body: JSON.stringify({
           name: name,
