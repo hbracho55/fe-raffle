@@ -34,7 +34,7 @@ interface Raffle {
 
 export const RaffleCard = ({ raffle, onSelect }: RaffleCardProps) => {
   const percentageSold = 100;
-  const drawDate = new Date('2025/12/05');
+  const drawDate = new Date('2026/07/31');
 
   return (
     <div
@@ -44,7 +44,7 @@ export const RaffleCard = ({ raffle, onSelect }: RaffleCardProps) => {
       <div className="relative h-56 bg-gradient-to-br from-blue-500 to-cyan-400">
         {raffle.description ? (
           <img
-            src='/caricatura_gim.png'
+            src='/lucy.jpeg'
             alt={raffle.title}
             className="w-full h-full object-cover"
           />
@@ -54,7 +54,7 @@ export const RaffleCard = ({ raffle, onSelect }: RaffleCardProps) => {
           </div>
         )}
         <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-sm font-semibold text-blue-600">
-          2.000 CLP
+          5.000 CLP
         </div>
       </div>
 

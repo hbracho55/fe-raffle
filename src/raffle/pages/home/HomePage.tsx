@@ -78,16 +78,18 @@ export const HomePage = () => {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <CustomJumbotron 
-          title='Rifa a beneficio de Marcela Bracho' 
-          description='Esta rifa tiene como objetivo recolectar fondos destinados a entrenemientos deportivos de Marcela que se realizarán en Argentina durante Febrero 2026.  Los tickets ganadores se obtendrán del terminal de los resultados de la loteria de Chile del día viernes 5 de diciembre (los resultados del sorteo se podrán revisar en el siguiente enlace: https://www.combinacionganadora.com/cl/).' 
-          awards='Premios' 
-          award1='- 1er Premio: Audífonos inalámbricos JBL. (Modelo Tune 520BT). Este premio se obtiene del terminal del resultado de la loteria de la noche.'
-          award2='- 2do Premio: Botella de vino Tinto Montes Alpha Carmenere 750 ml. Este premio se obtiene del terminal del resultado de la loteria de la tarde.'
-          award3='- 3er Premio: Botella de vino Tinto Montes Alpha Carmenere 750 ml. Este premio se obtiene del terminal del resultado de la loteria de la mañana.'
+          title='Rifa a beneficio de Lucy Piña Macías' 
+          description='Nuestra querida Lucy de sólo 6 años, fue diagnosticada con Leucemia Mieloblástica Aguda (LMA). Hoy enfrenta un tratamiento largo y desafiante, y necesitamos reunir fondos para cubrir sus gastos médicos y acompañarla en esta batalla. Cada aporte cuenta, y cada vez que compartes esta información nos ayudas a estar un poco mas cerca de darle a Lucy la oportunidad de salir adelante.' 
+          awards='Premio' 
+          award1='- 1er Premio: Camiseta Colo-Colo 2026 Firmada por jugadores Libertadores 91'
+          award2='- 2do Premio: Zapatillas Jordan Retro1'
+          award3='- 3er Premio: Calienta Camas 1pza'
           payment='Datos para el pago' 
-          description2='Transferencia a nombre de Marcela Bracho, cuenta rut 25654750 Banco Estado. Rut 25654750-3, correo hbracho55@hotmail.com. Teléfono +56983764365. Por favor indicar en la transferencia el número del ticket que se está pagando.'
+          description2='Transferencia a nombre de Valeska Pizarro, cuenta 019803583720 Banco Falabella. Rut 17729545-0, correo e.camusgonzalez25@gmail.com. Por favor indicar en la transferencia el/los número(s) de tickets que se están pagando.'
         />
-          
+        <img
+            src='/foto-premio.jpeg'
+          />
         {loading ? (
           <div className="flex justify-center items-center py-20">
             <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600"></div>
