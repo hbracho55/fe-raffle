@@ -90,6 +90,7 @@ export const HomePage = () => {
         <img
             src='/foto-premio.jpeg'
           />
+        <div className="py-4"></div>  
         {loading ? (
           <div className="flex justify-center items-center py-20">
             <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600"></div>
