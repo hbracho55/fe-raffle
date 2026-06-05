@@ -22,7 +22,7 @@ export const appRouter = createBrowserRouter([
         ],
     },
     {
-        path: '/admin',
+        path: '/adminBramen',
         element: <AdminLayout />,
         children: [
             {
