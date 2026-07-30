@@ -34,7 +34,7 @@ interface Raffle {
 
 export const RaffleCard = ({ raffle, onSelect }: RaffleCardProps) => {
   const percentageSold = 100;
-  const drawDate = new Date('2026/07/31');
+  const drawDate = new Date('2026/08/15');
 
   return (
     <div

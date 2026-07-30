@@ -53,7 +53,7 @@ export const RaffleModal = ({ raffle, onClose, onPurchaseSuccess, onPurchaseErro
   if (!raffle) return null;
 
   const total = 5000 * selectedNumbers.length;
-  const drawDate = new Date('2026/07/31');
+  const drawDate = new Date('2026/08/15');
 
   const handleNumberToggle = (ticket: Ticket) => {
     setSelectedNumbers(prev =>
