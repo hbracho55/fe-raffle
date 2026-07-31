@@ -52,7 +52,7 @@ export const RaffleModal = ({ raffle, onClose, onPurchaseSuccess, onPurchaseErro
   
   if (!raffle) return null;
 
-  const total = 5000 * selectedNumbers.length;
+  const total = 2000 * selectedNumbers.length;
   const drawDate = new Date('2026/08/15');
 
   const handleNumberToggle = (ticket: Ticket) => {
@@ -228,7 +228,7 @@ export const RaffleModal = ({ raffle, onClose, onPurchaseSuccess, onPurchaseErro
                 <Ticket className="w-5 h-5 mr-2" />
                 <span className="font-semibold">Precio por Ticket</span>
               </div>
-              <p className="text-gray-900 font-bold text-2xl">5.000 CLP</p>
+              <p className="text-gray-900 font-bold text-2xl">2.000 CLP</p>
             </div>
           </div>
 
