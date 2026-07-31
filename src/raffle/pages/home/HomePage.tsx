@@ -85,7 +85,7 @@ export const HomePage = () => {
           award2='- 2do Premio: Zapatillas Jordan Retro1'
           award3='- 3er Premio: Calienta Camas 1pza'
           payment='Datos para el pago' 
-          description2='Transferencia a nombre de Valeska Pizarro, cuenta 019803583720 Banco Falabella. Rut 17729545-0, correo e.camusgonzalez25@gmail.com. Por favor indicar en la transferencia el/los número(s) de tickets que se están pagando.'
+          description2='Transferencia a nombre de Valeska Pizarro, cuenta 019803583720 Banco Falabella. Rut 17729545-0, Whatsapp +56953621500. Por favor indicar en la transferencia el/los número(s) de tickets que se están pagando.'
         />
         <img
             src='/foto-premio.jpeg'
