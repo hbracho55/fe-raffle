@@ -144,7 +144,7 @@ export const HomePage = () => {
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2">¡Reserva de tickets exitosa!</h3>
               <p className="text-gray-600">
-                Recibirás un correo con los detalles de la reserva.
+                Recibirás un correo con los detalles de la reserva (Revisa la bandeja spam en caso de que no lo veas) y por favor recuerda hacer la transferencia.
               </p>
             </div>
             <button
